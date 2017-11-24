@@ -1,0 +1,165 @@
+// Example of Json  
+
+
+
+
+player.json
+
+
+{
+	"name":"Rahul",
+	"team":"RR",
+	"runs":"100"
+	
+}
+----------------------------------------------------------------------
+json using javascript
+first.html
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+	<h2>JSON Object Creation in JavaScript</h2>
+
+	<p id="demo"></p>
+	
+	<script>
+var text = 	
+'{"PlayerName":"Virat Kohli","Team":"India","Runs":"100"}';
+
+		var obj = JSON.parse(text);
+		//obj has all json value and keys
+
+		document.getElementById("demo").innerHTML =
+			obj.PlayerName + "<br>"	+ obj.Team + "<br>" + obj.Runs;
+	</script>
+
+
+
+</body>
+</html>
+----------------------------------------------------------
+json using Ajax object
+second.html
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script>
+	function myfun() {
+
+		obj = new XMLHttpRequest();//ajax object
+		obj.open("GET", "Player.json", false);//
+		obj.send();
+	var jsonobj = JSON.parse(obj.responseText);
+	document.getElementById("mydiv").innerHTML = jsonobj.name;
+	document.getElementById("run").innerHTML = jsonobj.runs;
+	document.getElementById("city").innerHTML = jsonobj.team;
+			
+		
+	}
+</script>
+</head>
+<body>
+	<button onclick="myfun()">clik here</button>
+	<div id="mydiv"></div>
+	<div id="run"></div>
+	<div id="city"></div>
+</body>
+</html>
+---------------------------------------------------------
+
+json using Jquery
+third.html
+
+
+
+
+<html>
+<head>
+<title>The jQuery Example</title>
+<script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() 
+      {
+
+		$("#mybutton").click(function() 
+                {
+
+			$.getJSON(
+					'Player.json', function(jsonobj) 
+                        {
+				//here data is used as in-out parameter
+				$('#myid').html(' Name: ' + jsonobj.name );
+				$('#myid1').html(' Runs: ' + jsonobj.runs );
+			});//getJSON close
+		
+                });//click close
+	
+     });//ready close
+</script>
+
+</head>
+
+<body>
+
+
+
+	<div id="myid">Name:</div>
+	<div id="myid1">Runs:</div>
+	<input type="button" id="mybutton" value="Load Data" />
+
+</body>
+
+</html>
+
+-----------------------------------------------------------------------------
+Putting data into array
+
+fourth.html
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<script>
+function myfun()
+{
+	var employees = [
+    {
+    "firstName":"Sachin",
+    "lastName":"Tendulkar"
+    }, 
+    {
+    "firstName":"Virat",
+    "lastName":"Kohali"
+    },
+    {
+    "firstName":"Veeru",
+    "lastName":"Sehwagh"
+    }
+];
+
+
+document.getElementById("demo").innerHTML =
+employees[1]["firstName"] + " " + employees[1]["lastName"];
+
+}
+</script>
+
+<p>How to create a JavaScript object array.</p>
+
+<button onclick="myfun()">click me</button>
+<p id="demo"></p>
+	q1`
+</body>
+</html>
